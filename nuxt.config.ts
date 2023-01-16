@@ -4,5 +4,5 @@ export default defineNuxtConfig({
     components: true,
 
     // modules 
-    modules: ['@nuxtjs/tailwindcss']
+    modules: ['@nuxtjs/tailwindcss', '@nuxtjs/device'],
 })

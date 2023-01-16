@@ -12,7 +12,7 @@
 
     <!-- icons -->
     <div class="mt-6 space-y-2">
-      <SidebarLeftLink v-for="link in sidebarLinks" :title="link.title" :icon="link.icon" :active="link.active"
+      <SidebarLeftLink v-for="link in sidebarLinks" :title="link.title" :icon="link.icon" :activeURL="link.activeURL"
         :href="link.href" :activeIcon="link.activeIcon" />
     </div>
   </section>
@@ -24,29 +24,27 @@ import { HomeIcon, InboxIcon, Cog8ToothIcon, UserGroupIcon, ArrowTrendingUpIcon 
 
 const { defaultTransition } = useTailwindTheme();
 const route = useRoute()
-const willThisLinkBeActive = (routeName) => {
-  return route.path.includes(routeName)
-}
+
 // all links
 const sidebarLinks = [
   {
     title: "Home",
     icon: HomeIcon,
-    active: route.path == '/' ,
+    activeURL: '/',
     activeIcon: HomeIconSolid,
   },
   {
-    title: "Trending.",
+    title: "Trending",
     activeIcon: ArrowTrendingUpIconSolid,
     icon: ArrowTrendingUpIcon,
-    active: willThisLinkBeActive('trending'),
+    activeURL: 'trending',
     href: 'trending'
   },
   {
     title: "Explore",
     icon: UserGroupIcon,
     activeIcon: UserGroupIconSolid,
-    active: ref(willThisLinkBeActive('explore')),
+    activeURL: 'explore',
     href: 'explore'
   },
 
@@ -54,14 +52,14 @@ const sidebarLinks = [
     title: "Messages",
     icon: InboxIcon,
     activeIcon: InboxIconSolid,
-    active: willThisLinkBeActive('messages'),
+    activeURL: 'messages',
     href: 'messages'
   },
   {
     title: "More...",
     icon: Cog8ToothIcon,
     activeIcon: Cog8ToothIconSolid,
-    active: willThisLinkBeActive('settings'),
+    activeURL: 'settings',
     href: '@username'
   },
 ];
