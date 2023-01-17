@@ -16,14 +16,14 @@
           </div>
 
           <!-- page view  -->
-          <div class="col-span-10 mx-3 md:col-span-8 xl:col-span-6">
+          <div class="col-span-11 mx-3 md:col-span-7 xl:col-span-6">
             <AppTitle :title="route.path.split('/')[1].trim() == '' ? 'Home' : route.path.split('/')[1]"/>
             <NuxtLoadingIndicator :height="5" color="#5F99F7"/> 
             <NuxtPage />
           </div>
 
           <!-- right side bar  -->
-          <div v-if="device.isDesktopOrTablet" class=" md:block xl:col-span-4 md:col-span-2">
+          <div v-if="device.isDesktopOrTablet" class="md:block xl:col-span-4 md:col-span-3">
             <div class="sticky top-0">
               <SidebarRight />
             </div>
