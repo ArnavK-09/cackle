@@ -9,7 +9,7 @@
         <div class="grid grid-cols-12 mx-auto lg:max-w-7xl lg:px-9 lg:gap-4">
           
           <!-- left side bar  -->
-          <div v-if="device.isDesktopOrTablet" class="md:block xl:col-span-2 xs:col-span-2">
+          <div class="md:block xl:col-span-2 xs:col-span-2">
             <div class="top-0 sticky">
               <SidebarLeft />
             </div>
