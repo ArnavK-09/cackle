@@ -9,7 +9,7 @@
         <div class="grid grid-cols-12 mx-auto lg:max-w-7xl lg:px-9 lg:gap-4">
           
           <!-- left side bar  -->
-          <div class="md:block xl:col-span-2 xs:col-span-1 z-10">
+          <div class="md:block md:col-span-1 xl:col-span-2 xs:col-span-1 z-10">
             <div class="top-0 sticky">
               <SidebarLeft />
             </div>
@@ -23,7 +23,7 @@
           </div>
 
           <!-- right side bar  -->
-          <div v-if="device.isDesktopOrTablet" class="col-span-10 md:block xl:col-span-4 md:col-span-3">
+          <div v-if="device.isDesktopOrTablet" class="hidden md:block xl:col-span-4 md:col-span-2">
             <div class="sticky top-0">
               <SidebarRight />
             </div>
