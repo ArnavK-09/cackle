@@ -11,7 +11,10 @@
         <section class="cards">
             <!-- trending card  -->
             <SidebarRightCard heading="What's Trending?">
-                <SidebarRightCardTrendItem v-for="i in [1, 2, 3]" title="#Cackle" subtitle="34.5K" />
+                {{ trendingList }}
+                <SafeSection>
+                    <SidebarRightCardTrendItem v-for="trend in trendingList" :title="trend.title" :subtitle="trend.total" />
+                </SafeSection>
             </SidebarRightCard>
 
 
@@ -25,6 +28,11 @@
 </template>
 
 <script setup>
-const { defaultTransition, defaultBorderColor } = useTailwindTheme();
+const { getTrending } = useBackend()
+const trendingList = ref([])
+onMounted(async () => {
+    trendingList.value = await getTrending()
+})
+
 
 </script>

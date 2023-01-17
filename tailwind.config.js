@@ -1,9 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [],
-  darkMode: 'class',
+  darkMode: "class",
   theme: {
-
     screens: {
       xs: "614px",
       sm: "1002px",
@@ -13,7 +12,6 @@ module.exports = {
     },
 
     extend: {
-
       colors: {
         cackle: {
           50: "#5F99F7",
@@ -27,12 +25,21 @@ module.exports = {
           800: "#162d40",
           900: "#15202b",
         },
+        cackle2: {
+          50: "#38444d",
+          100: "#3a2c20",
+          200: "#fec7aa",
+          300: "#fda374",
+          400: "#fb7d3c",
+          500: "#f96416",
+          600: "#ea580c",
+          700: "#c24a0c",
+          800: "#9a4112",
+          900: "#7c3612",
+        },
       },
-
     },
   },
 
-  plugins: [
-    require('@tailwindcss/forms')
-  ],
-}
+  plugins: [require("@tailwindcss/forms")],
+};

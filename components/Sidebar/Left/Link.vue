@@ -2,11 +2,11 @@
   <NuxtLink :to="href" :class="defaultTransition"
     class="flex items-center py-2 px-3 rounded-full dark:text-white text-black w-min hover:bg-gray-200 dark:hover:bg-cackle-200">
     <div class="w-6 h-6" v-if="icon || activeIcon">
-      <component :is="isActive == true ? activeIcon : icon" />
+      <component :is="isActive == true ? activeIcon : icon" :class="defaultTransition"/>
     </div>
 
     <div class="lg:block ml-2 text-lg hidden select-none" :class='isActive ? "font-semibold" : "font-thin"'>
-      {{ title }} <span class="hidden text-xs">{{ icn }}</span>
+      {{ title }}
     </div>
   </NuxtLink>
 </template>
@@ -17,11 +17,13 @@ const route = useRoute()
 let isActive;
 onMounted(() => {
   isActive = computed(() => {
-    if(route.path !== '/' && route.path.includes(props.activeURL)) {
-      return route.path.includes(props.activeURL)
+    if (props.activeURL !== '/' && route.path.replace('/', '').includes(props.activeURL)) {
+      return route.path.includes(props.activeURL);
+    } else if (route.path.replace('/', '') == '' && props.activeURL === '/') {
+      return true;
     } else {
-      return true
-    }
+      return false;
+    };
   });
 })
 

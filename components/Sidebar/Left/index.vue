@@ -19,11 +19,10 @@
 </template>
 
 <script setup>
-import { HomeIcon as HomeIconSolid, InboxIcon as InboxIconSolid, Cog8ToothIcon as Cog8ToothIconSolid, UserGroupIcon as UserGroupIconSolid, ArrowTrendingUpIcon as ArrowTrendingUpIconSolid } from "@heroicons/vue/24/solid";
-import { HomeIcon, InboxIcon, Cog8ToothIcon, UserGroupIcon, ArrowTrendingUpIcon } from "@heroicons/vue/24/outline";
+import { HomeIcon as HomeIconSolid, InboxIcon as InboxIconSolid, Cog8ToothIcon as Cog8ToothIconSolid, UserGroupIcon as UserGroupIconSolid, TagIcon as TagIconSolid } from "@heroicons/vue/24/solid";
+import { HomeIcon, InboxIcon, Cog8ToothIcon, UserGroupIcon, TagIcon } from "@heroicons/vue/24/outline";
 
 const { defaultTransition } = useTailwindTheme();
-const route = useRoute()
 
 // all links
 const sidebarLinks = [
@@ -35,8 +34,8 @@ const sidebarLinks = [
   },
   {
     title: "Trending",
-    activeIcon: ArrowTrendingUpIconSolid,
-    icon: ArrowTrendingUpIcon,
+    activeIcon: TagIconSolid,
+    icon: TagIcon,
     activeURL: 'trending',
     href: 'trending'
   },
