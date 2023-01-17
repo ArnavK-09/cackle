@@ -9,14 +9,14 @@
         <div class="grid grid-cols-12 mx-auto lg:max-w-7xl lg:px-9 lg:gap-4">
           
           <!-- left side bar  -->
-          <div class="md:block xl:col-span-2 xs:col-span-2">
+          <div class="md:block xl:col-span-2 xs:col-span-1 z-10">
             <div class="top-0 sticky">
               <SidebarLeft />
             </div>
           </div>
 
           <!-- page view  -->
-          <div class="col-span-10 md:col-span-8 xl:col-span-6">
+          <div class="col-span-10 mx-3 md:col-span-8 xl:col-span-6">
             <AppTitle :title="route.path.split('/')[1].trim() == '' ? 'Home' : route.path.split('/')[1]"/>
             <NuxtLoadingIndicator :height="5" color="#5F99F7"/> 
             <NuxtPage />
