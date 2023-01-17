@@ -23,7 +23,7 @@
           </div>
 
           <!-- right side bar  -->
-          <div v-if="device.isDesktopOrTablet" class="hidden md:block xl:col-span-4 md:col-span-2">
+          <div v-if="device.isDesktopOrTablet" class=" md:block xl:col-span-4 md:col-span-2">
             <div class="sticky top-0">
               <SidebarRight />
             </div>
