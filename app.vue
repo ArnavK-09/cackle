@@ -16,7 +16,7 @@
           </div>
 
           <!-- page view  -->
-          <div class="col-span-12 md:col-span-8 xl:col-span-6">
+          <div class="col-span-10 md:col-span-8 xl:col-span-6">
             <AppTitle :title="route.path.split('/')[1].trim() == '' ? 'Home' : route.path.split('/')[1]"/>
             <NuxtLoadingIndicator :height="5" color="#5F99F7"/> 
             <NuxtPage />
