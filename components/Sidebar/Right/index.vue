@@ -11,16 +11,18 @@
         <section class="cards">
             <!-- trending card  -->
             <SidebarRightCard heading="What's Trending?">
-                {{ trendingList }}
-                <SafeSection>
-                    <SidebarRightCardTrendItem v-for="trend in trendingList" :title="trend.title" :subtitle="trend.total" />
+                <SafeSection :isLoading="trendingList.length == 0">
+                    <SidebarRightCardTrendItem v-for="trend in trendingList" :title="trend.title"
+                        :subtitle="trend.total" />
                 </SafeSection>
             </SidebarRightCard>
 
 
             <!-- leaderboard card  -->
-            <SidebarRightCard heading="What's Trending?">
-                <SidebarRightCardProfileItem v-for="i in [1, 2, 3]" name="Cackle User" username="cackleuser" />
+            <SidebarRightCard heading="Who's On Top?">
+                <SafeSection :isLoading="lbList.length == 0">
+                    <SidebarRightCardProfileItem v-for="user in lbList" :name="user.name" :username="user.username" />
+                </SafeSection>
             </SidebarRightCard>
 
         </section>
@@ -28,10 +30,12 @@
 </template>
 
 <script setup>
-const { getTrending } = useBackend()
+const { getTrending, getLeaderboard } = useBackend()
 const trendingList = ref([])
+const lbList = ref([])
 onMounted(async () => {
     trendingList.value = await getTrending()
+    lbList.value = await getLeaderboard()
 })
 
 

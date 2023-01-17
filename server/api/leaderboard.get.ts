@@ -2,15 +2,13 @@ export default defineEventHandler((e) => {
     return new Promise(async (resolve, reject) => {
       try {
           const response = [{
-               title: '#Cackle',
-                total: '545.6K'
-             },{
-              title: 'Cackle Under Development',
-               total: '55.3K'
-            }]
+              name: 'John Doe',
+              username: 'username',
+              img: 'https://picsum.photos/200/200'
+             }]
              setTimeout(() => {
                resolve(response)
-             }, 3000);
+             }, 2000);
       } catch (error) {
           reject(error)
       }

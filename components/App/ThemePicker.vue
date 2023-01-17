@@ -7,6 +7,6 @@
             <option value="dark">Dark</option>
         </select>
 
-        <button @click="() => { throw createError({ statusMessage: 'Page Not Found' }) }">TEST</button>
+        <button @click="() => { throw createError({ statusMessage: 'Page Not Found' }) }">ER</button>
     </section>
 </template>

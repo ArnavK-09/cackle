@@ -1,7 +1,7 @@
 <template>
     <section class="border-x" :class="defaultBorderColor">
         <!-- spinner  -->
-        <div v-if="isLoading">
+        <div v-if="isLoading" class="flex items-center justify-center ">
             <AppSpinner />
         </div>
 
