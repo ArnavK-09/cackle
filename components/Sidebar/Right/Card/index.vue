@@ -15,7 +15,7 @@
 
         <!-- more link  -->
         <div :class="[defaultTransition, defaultBorderColor]" class="text-center border-t border overflow-hidden hover:bg-gray-100 dark:hover:bg-cackle-300">
-            <NuxtLink class="select-none my-3 text-sm px-2 text-cackle-500 font-thin hover:underline" to="#">See More...
+            <NuxtLink class="select-none my-3 text-sm px-2 text-cackle-500 font-thin hover:underline" :to="seeMoreHref">See More...
             </NuxtLink>
         </div>
 
@@ -28,6 +28,11 @@ const props = defineProps({
     heading: {
         type: String,
         required: true,
+    },
+    seeMoreHref: {
+        type: String,
+        required: false,
+        default: '/'
     }
 })
 </script>

@@ -8,7 +8,7 @@
         <!-- cards  -->
         <section class="cards">
             <!-- trending card  -->
-            <SidebarRightCard heading="What's Trending?">
+            <SidebarRightCard heading="What's Trending?" seeMoreHref="trending">
                 <SafeSection
                     :isLoading="trendingList.length == 0 && (trendingList.error == false || trendingList.error == undefined)">
                     <SidebarRightCardTrendItem v-for="trend in trendingList" :title="trend.title"
@@ -19,7 +19,7 @@
 
 
             <!-- leaderboard card  -->
-            <SidebarRightCard heading="Who's On Top?">
+            <SidebarRightCard heading="Who's On Top?" seeMoreHref="explore">
                 <SafeSection :isLoading="lbList.length == 0 && (lbList.error == false || lbList.error == undefined)">
                     <SidebarRightCardProfileItem v-for="user in lbList" :name="user.name" :username="user.username"
                         :err="lbList.error ? getCardErrMsg(lbList) : getCardErrMsg(false)" />
