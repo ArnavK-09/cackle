@@ -1,5 +1,5 @@
 <template>
-    <section class="border-x" :class="defaultBorderColor">
+    <section>
         <!-- spinner  -->
         <div v-if="isLoading" class="flex items-center justify-center ">
             <AppSpinner />
@@ -18,7 +18,6 @@
 </template>
 
 <script setup>
-const { defaultBorderColor } = useTailwindTheme()
 const props = defineProps({
     isLoading: {
         type: Boolean,

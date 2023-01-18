@@ -14,6 +14,17 @@ const props = defineProps({
     subtitle: {
         type: String,
         default: '...'
+    },
+    err: {
+        default: {status: false, message: 'BUG'},
+        required: false
+    }
+})
+
+
+onMounted(() => {
+    if(props.err.status) {
+        throw createError({ message: props.err.message })
     }
 })
 </script>

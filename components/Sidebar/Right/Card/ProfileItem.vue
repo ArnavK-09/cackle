@@ -33,5 +33,16 @@ const props = defineProps({
         type: String,
         default: 'https://picsum.photos/200/200'
     },
+    err: {
+        default: {status: false, message: 'BUG'},
+        required: false
+    }
+})
+
+
+onMounted(() => {
+    if(props.err.status) {
+        throw createError({ message: props.err.message })
+    }
 })
 </script>

@@ -1,7 +1,5 @@
 <template>
     <section class="flex flex-col">
-
-
         <!-- search bar  -->
         <div>
             <SidebarRightSearch />
@@ -11,17 +9,20 @@
         <section class="cards">
             <!-- trending card  -->
             <SidebarRightCard heading="What's Trending?">
-                <SafeSection :isLoading="trendingList.length == 0">
+                <SafeSection
+                    :isLoading="trendingList.length == 0 && (trendingList.error == false || trendingList.error == undefined)">
                     <SidebarRightCardTrendItem v-for="trend in trendingList" :title="trend.title"
-                        :subtitle="trend.total" />
+                        :subtitle="trend.total"
+                        :err="trendingList.error ? getCardErrMsg(trendingList) : getCardErrMsg(false)" />
                 </SafeSection>
             </SidebarRightCard>
 
 
             <!-- leaderboard card  -->
             <SidebarRightCard heading="Who's On Top?">
-                <SafeSection :isLoading="lbList.length == 0">
-                    <SidebarRightCardProfileItem v-for="user in lbList" :name="user.name" :username="user.username" />
+                <SafeSection :isLoading="lbList.length == 0 && (lbList.error == false || lbList.error == undefined)">
+                    <SidebarRightCardProfileItem v-for="user in lbList" :name="user.name" :username="user.username"
+                        :err="lbList.error ? getCardErrMsg(lbList) : getCardErrMsg(false)" />
                 </SafeSection>
             </SidebarRightCard>
 
@@ -33,9 +34,24 @@
 const { getTrending, getLeaderboard } = useBackend()
 const trendingList = ref([])
 const lbList = ref([])
+
+const getCardErrMsg = (list) => {
+    return list == false ? { status: false } : { status: list.error, message: list.errorMsg }
+}
 onMounted(async () => {
-    trendingList.value = await getTrending()
-    lbList.value = await getLeaderboard()
+    try {
+        trendingList.value = await getTrending()
+
+    } catch (e) {
+        trendingList.value = { error: true, errorMsg: e }
+    }
+
+    try {
+        lbList.value = await getLeaderboard()
+
+    } catch (e) {
+        lbList.value = { error: true, errorMsg: e }
+    }
 })
 
 
