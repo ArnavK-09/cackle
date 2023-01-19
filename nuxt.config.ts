@@ -23,7 +23,8 @@ export default defineNuxtConfig({
     refreshOnResize: true
   },
 
- build: {
+  // transpile icons
+  build: {
     transpile: ['@heroicons/vue']
-}
+  }
 })
