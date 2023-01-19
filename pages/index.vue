@@ -3,3 +3,7 @@
         <AppThemePicker />
     </SafeSection>
 </template>
+
+<script setup>
+useHead(useHeadHelper('Home'))
+</script>

@@ -16,14 +16,14 @@
           </div>
 
           <!-- page view  -->
-          <div class="col-span-11 ml-3  md:mx-3 lg:ml-10 lg:col-span-8 md:col-span-8 xl:col-span-6 ">
+          <div class="col-span-11 ml-3  md:mx-3 lg:ml-10 lg:col-span-8 md:col-span-8 xl:col-span-7 ">
             <AppTitle :title="route.path.split('/')[1].trim() == '' ? 'Home' : route.path.split('/')[1]"/>
-            <NuxtLoadingIndicator :height="5" color="#5F99F7"/> 
+            <NuxtLoadingIndicator :height="5" :color="loaderColor"/> 
             <NuxtPage />
           </div>
 
           <!-- right side bar  -->
-          <div class="hidden md:block xl:col-span-4 md:col-span-3">
+          <div class="hidden md:block xl:col-span-3 md:col-span-3">
             <div class="sticky top-0">
               <SidebarRight />
             </div>
@@ -37,6 +37,14 @@
 
 <script setup>
 const isUserLoggedIn = ref(false);
-const device = useDevice()
 const route = useRoute()
+const colorMode = useColorMode()
+const siteTitle = ref('Cackle Site')
+const loaderColor = computed(() => {
+  if(colorMode.preference == 'dark') {
+    return '#ffffff'
+  } else {
+    return '#5F99F7'
+  }
+}); 
 </script>
