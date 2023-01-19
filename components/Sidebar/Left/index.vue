@@ -2,7 +2,7 @@
   <section class="flex h-screen flex-col">
     <!-- logo -->
     <div :class="defaultTransition"
-      class="dark:border dark:border-white rounded-full mr-2  mt-2 ml-1 lg:ml-5 p-2 mb-2 hover:bg-cackle-500/10 dark:hover:bg-white/30 w-min">
+      class="rounded-full mr-2  mt-2 ml-1 lg:ml-5 p-2 mb-2 hover:bg-cackle-500/10 dark:hover:bg-white/30 w-min">
       <NuxtLink to="/">
         <div>
           <AppLogo />
