@@ -39,7 +39,6 @@
 const isUserLoggedIn = ref(false);
 const route = useRoute()
 const colorMode = useColorMode()
-const siteTitle = ref('Cackle Site')
 const loaderColor = computed(() => {
   if(colorMode.preference == 'dark') {
     return '#ffffff'

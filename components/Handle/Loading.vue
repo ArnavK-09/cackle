@@ -1,6 +1,6 @@
 <template>
-    <section class="py-5">
-        <div class="w-10 h-10 text-black dark:text-white animate-spin ">
+    <section id="loading_spinner">
+        <div class="w-7 h-7 text-black dark:text-white animate-spin ">
             <ClockIcon /> 
         </div>
     </section>

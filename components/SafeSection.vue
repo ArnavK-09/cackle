@@ -1,8 +1,8 @@
 <template>
     <section>
         <!-- spinner  -->
-        <div v-if="isLoading" class="flex items-center justify-center ">
-            <AppSpinner />
+        <div v-if="isLoading" :class="doCenter == true ? 'flex items-center justify-center' : '' ">
+            <HandleLoading />
         </div>
 
         <!-- view  -->
@@ -22,6 +22,11 @@ const props = defineProps({
     isLoading: {
         type: Boolean,
         default: false
+    },
+    doCenter: {
+        type: Boolean,
+        default: true,
+        required: false
     }
 })
 </script>

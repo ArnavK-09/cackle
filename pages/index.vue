@@ -1,6 +1,6 @@
 <template>
     <SafeSection>
-        <AppThemePicker />
+        <PostForm />
     </SafeSection>
 </template>
 
