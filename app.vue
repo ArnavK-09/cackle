@@ -42,11 +42,5 @@
 // temperory 
 const isUserLoggedIn = ref(true);
 const route = useRoute() 
-
-onMounted(() => {
-  setTimeout(() => {
-    isUserLoggedIn.value = true
-  }, 1000 )
-})
 </script>
 

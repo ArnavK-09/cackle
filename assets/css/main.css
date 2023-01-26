@@ -1,10 +1,11 @@
 /* page transition  */
 .page-enter-active,
 .page-leave-active {
-  transition: all 0.2s;
+  cursor: wait;
+  transition: all 0.4s;
 }
 .page-enter-from,
 .page-leave-to {
-  opacity: 0;
+  cursor: wait;
   filter: blur(1rem);
 }
