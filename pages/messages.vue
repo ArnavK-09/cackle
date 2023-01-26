@@ -5,5 +5,7 @@
 </template>
 
 <script setup>
-useHead(useHeadHelper('Messages'))
+useHead(useMetaHelper({
+    title: 'Your messages'
+}))
 </script>

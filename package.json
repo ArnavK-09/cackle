@@ -8,10 +8,13 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
+    "@kevinmarrec/nuxt-pwa": "^0.15.0",
+    "@nuxt/test-utils": "^3.1.1",
     "@nuxtjs/color-mode": "^3.2.0",
     "@nuxtjs/device": "^3.0.0",
     "@nuxtjs/tailwindcss": "^6.2.0",
-    "nuxt": "3.0.0"
+    "nuxt": "3.0.0",
+    "vitest": "^0.28.2"
   },
   "dependencies": {
     "@heroicons/vue": "^2.0.13",

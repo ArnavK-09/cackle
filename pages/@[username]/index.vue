@@ -3,7 +3,10 @@
 </template>
 
 <script setup>
-    const route = useRoute()
-    useHead(useHeadHelper(`Profile Of @${route.params.username}`))
+const route = useRoute()
+
+useHead(useMetaHelper({
+    title: `Profile Of @${route.params.username}`
+}))
 </script>
 

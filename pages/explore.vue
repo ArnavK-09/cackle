@@ -5,5 +5,7 @@
 </template>
 
 <script setup>
-useHead(useHeadHelper('Explore'))
+useHead(useMetaHelper({
+    title: 'Explore new users'
+}))
 </script>

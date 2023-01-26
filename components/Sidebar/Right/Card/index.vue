@@ -4,7 +4,7 @@
 
         <!-- heading  -->
         <h1 :class="[defaultTransition, defaultBorderColor]"
-            class="select-none px-3 py-4 border-b font-extrabold cursor-grab text-gray-900 dark:text-white overflow-hidden hover:bg-gray-100 dark:hover:bg-cackle-300">
+            class="select-none px-3 py-4 border-b font-extrabold tracking-wide cursor-grab text-gray-900 dark:text-white overflow-hidden hover:bg-gray-100 dark:hover:bg-cackle-300">
             {{ heading }}
         </h1>
 

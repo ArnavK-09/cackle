@@ -1,8 +1,8 @@
 <template>
-  <NuxtLink :to="href" :class="defaultTransition"
+  <NuxtLink :to="href" :class="defaultTransition" :aria-label="title"
     class="flex items-center py-2 px-3 rounded-full dark:text-white text-black w-min hover:bg-gray-200 dark:hover:bg-cackle-200">
     <div class="w-6 h-6" v-if="icon || activeIcon">
-      <component :is="isActive == true ? activeIcon : icon" :class="defaultTransition"/>
+      <component :is="isActive == true ? activeIcon : icon" :class="defaultTransition" />
     </div>
 
     <div class="lg:block ml-2 text-lg hidden select-none" :class='isActive ? "font-semibold" : "font-thin"'>

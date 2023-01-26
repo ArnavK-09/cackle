@@ -18,13 +18,13 @@
 
 
     <!-- profilezone  -->
-    <SidebarLeftUserProfile username="JoneDoe" handle="johndoe.1" image="https://picsum.photos/200/200"/>
+    <SidebarLeftUserProfile username="JoneDoe" handle="johndoe.1" image="https://picsum.photos/200/200" />
   </section>
 </template>
 
 <script setup>
-import { HomeIcon as HomeIconSolid, InboxIcon as InboxIconSolid, Cog8ToothIcon as Cog8ToothIconSolid, UserGroupIcon as UserGroupIconSolid, TagIcon as TagIconSolid } from "@heroicons/vue/24/solid";
-import { HomeIcon, InboxIcon, Cog8ToothIcon, UserGroupIcon, TagIcon } from "@heroicons/vue/24/outline";
+import { HomeIcon as HomeIconSolid, InboxIcon as InboxIconSolid, Cog8ToothIcon as Cog8ToothIconSolid, UserGroupIcon as UserGroupIconSolid, TagIcon as TagIconSolid, BookmarkSquareIcon as BookmarkSquareIconSolid } from "@heroicons/vue/24/solid";
+import { HomeIcon, InboxIcon, Cog8ToothIcon, UserGroupIcon, TagIcon, BookmarkSquareIcon } from "@heroicons/vue/24/outline";
 
 const { defaultTransition } = useTailwindTheme();
 
@@ -50,7 +50,13 @@ const sidebarLinks = [
     activeURL: 'explore',
     href: 'explore'
   },
-
+  {
+    title: "Bookmarks",
+    icon: BookmarkSquareIcon,
+    activeIcon: BookmarkSquareIconSolid,
+    activeURL: 'bookmarks',
+    href: 'bookmarks'
+  },
   {
     title: "Messages",
     icon: InboxIcon,

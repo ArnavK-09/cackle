@@ -1,5 +1,24 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+
+  // app 
+  app: {
+    pageTransition: { name: 'page', mode: 'out-in' },
+    head: {
+      title: 'Explore Cackle, Meet New People, Post Your Knowledge',
+      titleTemplate: '%s | Cackle App',
+      meta: [
+        { hid: 'description', name: 'description', content: 'Cackle Site' }
+      ],
+      link: [
+        {rel: 'icon', type: 'image/png', href: "/icon.png"}
+      ],
+      htmlAttrs: {
+        lang: 'en'
+      },
+    }
+  },
+
   // auto import components
   components: true,
 
@@ -26,5 +45,5 @@ export default defineNuxtConfig({
   // transpile icons
   build: {
     transpile: ['@heroicons/vue']
-  }
+  },
 })

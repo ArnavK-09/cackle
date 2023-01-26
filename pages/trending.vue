@@ -5,5 +5,7 @@
 </template>
 
 <script setup>
-useHead(useHeadHelper('Trending'))
+useHead(useMetaHelper({
+    title: 'What\'s Trending?'
+}))
 </script>

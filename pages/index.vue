@@ -1,9 +1,11 @@
 <template>
     <SafeSection>
-        <PostForm />
+        <PostForm :user="{ img: 'https://picsum.photos/200/200'}"/>
     </SafeSection>
 </template>
 
 <script setup>
-useHead(useHeadHelper('Home'))
+useHead(useMetaHelper({
+    title: 'Home'
+}))
 </script>

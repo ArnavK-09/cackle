@@ -14,7 +14,7 @@
         </div>
         <!-- ICON -->
         <div class="hidden ml-auto xl:block">
-            <div class="w-5 h-5 text-gray-800 dark:text-white hover:shadow-md">
+            <div class="w-5 h-5 text-gray-800 dark:text-white">
                 <SafeSection :isLoading="$colorMode.unknown" :doCenter="false">
                 <span @click.prevent="toggleTheme" v-if="$colorMode.value == 'dark'">
                     <MoonIcon />

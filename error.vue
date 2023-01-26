@@ -9,4 +9,8 @@ const props = defineProps({
         required: false,
     },
 })
+
+useHead(useMetaHelper({
+    title: `Oh No! You met with an error`
+}))
 </script>

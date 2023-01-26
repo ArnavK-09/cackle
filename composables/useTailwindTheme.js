@@ -10,7 +10,7 @@ export default function () {
     }
     return {
         toggleTheme,
-        defaultTransition: 'transition ease-in-out duration-250',
-        defaultBorderColor: 'border-white-200 dark:border-gray-700',
+        defaultTransition: ' transition ease-in-out duration-250',
+        defaultBorderColor: ' border-white-200 dark:border-gray-700',
     }
 }
