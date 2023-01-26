@@ -3,7 +3,7 @@
     <!-- logo -->
     <div :class="defaultTransition"
       class="rounded-full mr-2  mt-2 ml-1 lg:ml-5 p-2 mb-2 hover:bg-cackle-500/10 dark:hover:bg-white/30 w-min">
-      <NuxtLink to="/">
+      <NuxtLink to="/" aria-label="Cackle">
         <div>
           <AppLogo />
         </div>
