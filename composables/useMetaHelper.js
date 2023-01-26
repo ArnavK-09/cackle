@@ -1,19 +1,4 @@
 export default function useMetaHelper(params) {
-
-  // function getSeoData({
-  //   title = 'Cackle',
-  //   description = 'Cackle description',
-  //   image = null
-  // }) {
-  //   return {
-  //     title: title + ' | Cackle App',
-  //     ogTitle: title + ' | Cackle App',
-  //     description: description,
-  //     ogDescription: description,
-  //     ogImage: image,
-  //     twitterCard: 'summary_large_image',
-  //   }
-  // }
   
   function getHeadData({
     title = 'Home',
@@ -22,8 +7,25 @@ export default function useMetaHelper(params) {
     return {
       title: title,
       description: description,
+      // meta tags 
       meta: [
-        { name: 'description', content: description }
+        // standard tags 
+        { hid: 'description', name: 'description', content: description },
+        { name: 'theme-color', content: '#307af2' },
+        { name: 'msapplication-TileColor', content: '#307af2' },
+
+
+        // og tags 
+        { name: 'og:type', content: 'website' },
+        { name: 'og:title', content: title },
+        { name: 'og:description', content: description },
+        { name: 'og:image', content: 'icon.png' },
+
+        // twitter tags 
+        { name: 'twitter:card', content: 'app' },
+        { name: 'twitter:title', content: title },
+        { name: 'twitter:description', content: description },
+        { name: 'twitter:image', content: 'icon.png' },
       ],
     }
   }

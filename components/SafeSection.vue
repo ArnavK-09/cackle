@@ -1,7 +1,7 @@
 <template>
     <section :class="classes">
         <!-- spinner  -->
-        <div v-if="isLoading" :class="doCenter == true ? 'flex items-center justify-center' : '' ">
+        <div v-if="isLoading" :class="doCenter == true ? 'flex items-center justify-center py-7' : '' ">
             <HandleLoading />
         </div>
 

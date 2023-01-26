@@ -16,7 +16,6 @@
         :href="link.href" :activeIcon="link.activeIcon" />
     </div>
 
-
     <!-- profilezone  -->
     <SidebarLeftUserProfile username="JoneDoe" handle="johndoe.1" image="https://picsum.photos/200/200" />
   </section>

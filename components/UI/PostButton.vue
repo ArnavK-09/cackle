@@ -1,20 +1,17 @@
 <template>
     <button :disabled="disabled" @click="() => $emit('onClick')" :class="btnClasses">
-        <span :class="`text-${font}`"> {{ label }} </span>
+        <span :class="`hidden sm:block text-${font}`"> {{ label }} </span>
+        <span :class="`sm:hidden text-${font} w-5 h-5`"> <PaperAirplaneIcon /> </span>
     </button>
 </template>
 <script setup>
+import { PaperAirplaneIcon } from '@heroicons/vue/24/outline';
 const { defaultTransition } = useTailwindTheme();
 defineProps({
     label: {
         type: String,
         required: false,
         default: 'Post'
-    },
-    spread: {
-        type: Boolean,
-        required: false,
-        default: false
     },
     font: {
         type: String,

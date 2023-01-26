@@ -1,10 +1,10 @@
 <template>
-    <div class="w-min flex flex-row items-center justify-center md:px-2 py-2 md:mx-auto mt-auto mb-5 rounded-full cursor-pointer xl:w-full hover:bg-gray-100 dark:hover:bg-gray-800"
+    <div class="w-full mx-1 flex flex-row items-center justify-center md:px-2 py-2 md:mx-auto mt-auto mb-5 rounded-full cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800"
         :class="defaultTransition">
         <div class="flex flex-row">
             <img :src="image" class="w-8 h-8 md:w-10 md:h-10 rounded-full">
             <div class="flex-col hidden ml-2 xl:block">
-                <h1 class="text-sm font-bold text-gray-800 dark:text-white">
+                <h1 class="text-sm font-semibold tracing-wide text-gray-800 dark:text-white">
                     {{ username }} 
                 </h1>
                 <p class="text-sm text-gray-400">
@@ -13,13 +13,13 @@
             </div>
         </div>
         <!-- ICON -->
-        <div class="hidden ml-auto xl:block">
+        <div class="hidden ml-auto xl:block" @click.prevent="toggleTheme">
             <div class="w-5 h-5 text-gray-800 dark:text-white">
                 <SafeSection :isLoading="$colorMode.unknown" :doCenter="false">
-                <span @click.prevent="toggleTheme" v-if="$colorMode.value == 'dark'">
+                <span v-if="$colorMode.value == 'dark'">
                     <MoonIcon />
                 </span>
-                <span @click.prevent="toggleTheme" v-else>
+                <span v-else>
                     <SunIcon />
                 </span>
             </SafeSection>
