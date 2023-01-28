@@ -1,5 +1,5 @@
 <template>
-    <SafeSection :classes="'border-y shadow-md z-8 rounded-md' + defaultBorderColor">
+    <SafeSection :classes="' shadow-md z-8 rounded-md' + defaultBorderColor">
         <div class="flex items-center flex-shrink-0 p-3 pb-0">
 
             <div class="flex w-12 items-top">
@@ -39,7 +39,7 @@
 
 
             <div class="ml-auto">
-                <UIPostButton @onClick="handlePostButton" />
+                <PostButton @onClick="handlePostButton" />
             </div>
 
         </div>
@@ -50,7 +50,7 @@
 import { PhotoIcon, ClipboardIcon } from "@heroicons/vue/24/outline";
 const openImageSelector = () => imageInput.value.click();
 const imageInput = ref('')
-const { defaultBorderColor, defaultTransition } = useTailwindTheme()
+const { defaultBorderColor, defaultTransition } = useAppConfig().theme;
 const selectedFiles = reactive([])
 const placeholder = computed(() => {
     let holders = [

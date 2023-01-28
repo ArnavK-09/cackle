@@ -1,3 +1,7 @@
+// imports 
+import type { lbUser } from "../types";
+
+
 export default function() {
     const getTrending = () => {
         return new Promise(async (resolve, reject) => {
@@ -17,7 +21,8 @@ export default function() {
             try {
                 const response = await useApi('leaderboard', {
                     method: 'GET',
-                })
+                }) as lbUser;
+
                 resolve(response)
             } catch (error) {
                 reject(error)

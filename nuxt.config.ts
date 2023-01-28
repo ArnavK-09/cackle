@@ -14,7 +14,7 @@ export default defineNuxtConfig({
       // meta tags 
       meta: [
         // standard tags 
-        { hid: 'description', name: 'description', content: 'Explore Cackle, Meet New People, Post Your Knowledge' },
+        { name: 'description', content: 'Explore Cackle, Meet New People, Post Your Knowledge' },
         { name: 'theme-color', content: '#307af2' },
         { name: 'msapplication-TileColor', content: '#307af2' },
 
@@ -92,5 +92,10 @@ export default defineNuxtConfig({
   css: [
     // global css file
     '@/assets/css/main.css',
-  ]
+  ],
+
+  // type safe 
+  typescript: {
+    strict: true
+  }
 })

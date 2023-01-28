@@ -1,4 +1,4 @@
-export default (url, options = {}) => {
+export default (url: String, options: any = {}) => {
     // const { useAuthToken } = useAuth()
 
 

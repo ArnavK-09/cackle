@@ -1,16 +1,17 @@
-export default function useMetaHelper(params) {
+import { Head } from "@zhead/schema";
+import { headDataParams } from "~~/types";
+export default function useMetaHelper(params: headDataParams) {
   
   function getHeadData({
     title = 'Home',
-    description = 'Cackle description head',
-  }) {
+    description = 'working? x2',
+  }: headDataParams): Head {
     return {
       title: title,
-      description: description,
       // meta tags 
       meta: [
         // standard tags 
-        { hid: 'description', name: 'description', content: description },
+        { name: 'description', content: description },
         { name: 'theme-color', content: '#307af2' },
         { name: 'msapplication-TileColor', content: '#307af2' },
 

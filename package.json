@@ -2,19 +2,19 @@
   "private": true,
   "scripts": {
     "build": "nuxt build",
-    "dev": "nuxt dev",
+    "dev": "nuxi typecheck && nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "@kevinmarrec/nuxt-pwa": "^0.15.0",
     "@nuxt/test-utils": "^3.1.1",
     "@nuxtjs/color-mode": "^3.2.0",
     "@nuxtjs/device": "^3.0.0",
     "@nuxtjs/tailwindcss": "^6.2.0",
+    "@zhead/schema": "^1.0.9",
     "nuxt": "3.0.0",
-    "vitest": "^0.28.2"
+    "vitest": "^0.28.3"
   },
   "dependencies": {
     "@heroicons/vue": "^2.0.13",

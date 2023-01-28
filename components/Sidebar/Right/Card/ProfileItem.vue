@@ -19,7 +19,7 @@
 </template>
 
 <script setup>
-const { defaultTransition } = useTailwindTheme();
+const { defaultTransition } = useAppConfig().theme;
 const props = defineProps({
     name: {
         type: String,

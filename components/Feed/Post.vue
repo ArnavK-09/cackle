@@ -1,3 +1,3 @@
 <template>
-    header
+    Post
 </template>
