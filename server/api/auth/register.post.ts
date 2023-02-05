@@ -35,10 +35,10 @@ export default defineEventHandler(async (e) => {
         })
         .catch((error) => {
             console.warn(error);
-            throw createError({
-                statusCode: 500,
-                statusMessage: 'wtf'
-            });
+            // return createError({
+            //     statusCode: 500,
+            //     statusMessage: "wtf",
+            // });
         });
 
     // try {

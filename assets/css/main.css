@@ -1,11 +1,38 @@
 /* page transition  */
 .page-enter-active,
 .page-leave-active {
-  cursor: wait;
-  transition: all 0.4s;
+    cursor: wait;
+    transition: all 0.4s;
 }
 .page-enter-from,
 .page-leave-to {
-  cursor: wait;
-  filter: blur(1rem);
+    cursor: wait;
+    filter: blur(1rem);
+}
+
+/* scroll bar  */
+/* width */
+::-webkit-scrollbar {
+    width: 0.5rem;
+}
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(
+        0deg,
+        rgba(48, 122, 242, 0.151) 0%,
+        rgba(48, 122, 242, 0.151) 100%
+    );
+    border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    0deg,
+    rgba(48, 122, 242, 0.545) 0%,
+    rgba(48, 122, 242, 0.548) 100%
+);
+}
+
+
+/* body  */
+body {
+  overflow: overlay;
 }

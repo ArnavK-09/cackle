@@ -2,15 +2,14 @@
     <!-- left side bar child link component   -->
     <NuxtLink
         :to="href"
-        :class="defaultTransition"
         :aria-label="title"
-        class="flex items-center py-2 px-3 rounded-full dark:text-white text-black w-min hover:bg-gray-200 dark:hover:bg-cackle-200"
+        class="transition ease-in-out duration-250 flex items-center py-2 px-3 rounded-full dark:text-white text-black w-min hover:bg-gray-200 dark:hover:bg-cackle-200"
     >
         <div class="w-6 h-6" v-if="icon || activeIcon">
             <!-- active icon state  -->
             <component
                 :is="isActive == true ? activeIcon : icon"
-                :class="defaultTransition"
+                class="transition ease-in-out duration-250 underline"
             />
         </div>
 
@@ -25,9 +24,6 @@
 </template>
 
 <script setup>
-// theme transitions
-const { defaultTransition } = useAppConfig().theme;
-
 // current page route
 const route = useRoute();
 

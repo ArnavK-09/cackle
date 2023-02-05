@@ -1,7 +1,6 @@
 <template>
     <div
-        class="w-full mx-1 flex flex-row items-center justify-center md:px-2 py-2 md:mx-auto mt-auto mb-5 rounded-full cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800"
-        :class="defaultTransition"
+        class="w-full mx-1 flex flex-row items-center justify-center md:px-2 py-2 md:mx-auto mt-auto mb-5 rounded-full cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800 transition ease-in-out duration-250"
     >
         <div class="flex flex-row">
             <!-- user profile image  -->
@@ -40,9 +39,6 @@
 <script setup>
 // icons indicating theme
 import { SunIcon, MoonIcon } from "@heroicons/vue/24/solid";
-
-// theme Transition
-const { defaultTransition } = useAppConfig().theme;
 
 // props
 defineProps({

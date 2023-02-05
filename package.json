@@ -2,7 +2,8 @@
   "private": true,
   "scripts": {
     "build": "nuxt build",
-    "dev": "nuxi typecheck && nuxt dev",
+    "dev": "nuxt dev",
+    "check": "nuxt typecheck",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
@@ -22,6 +23,7 @@
     "@heroicons/vue": "^2.0.13",
     "@prisma/client": "^4.9.0",
     "@tailwindcss/forms": "^0.5.3",
-    "bcrypt": "^5.1.0"
+    "bcrypt": "^5.1.0",
+    "vue3-carousel": "^0.2.9"
   }
 }

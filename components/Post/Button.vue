@@ -15,7 +15,6 @@
 <script setup>
 // imports
 import { PaperAirplaneIcon } from "@heroicons/vue/24/outline";
-const { defaultTransition } = useAppConfig().theme;
 
 // props for button
 defineProps({
@@ -41,6 +40,6 @@ const btnClasses =
     `
         py-1 px-4 cursor-pointer rounded-full bg-cackle-500 text-center text-white border flex 
         justify-center border-cackle-500 hover:bg-cackle-500/10 hover:text-cackle-500 
-        hover:shadow-sm font-semibold 
-    ` + defaultTransition;
+        hover:shadow-sm font-semibold transition ease-in-out duration-250 
+    `;
 </script>

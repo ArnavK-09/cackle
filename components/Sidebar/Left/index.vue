@@ -3,8 +3,7 @@
         <!-- logo -->
         <NuxtLink to="/" aria-label="Cackle">
             <div
-                :class="defaultTransition"
-                class="rounded-full mr-2 mt-2 ml-1 lg:ml-5 p-2 mb-2 hover:bg-cackle-500/10 dark:hover:bg-white/30 w-min"
+                class="transition ease-in-out duration-250 underline rounded-full mr-2 mt-2 ml-1 lg:ml-5 p-2 mb-2 hover:bg-cackle-500/10 dark:hover:bg-white/30 w-min"
             >
                 <AppLogo />
             </div>
@@ -50,9 +49,6 @@ import {
     TagIcon,
     BookmarkSquareIcon,
 } from "@heroicons/vue/24/outline";
-
-// theme transition
-const { defaultTransition } = useAppConfig().theme;
 
 // all sidebar links with icons and url
 const sidebarLinks = [

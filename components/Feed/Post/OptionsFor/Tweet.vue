@@ -1,3 +1,3 @@
 <template>
-    Post
+    Tweet Options
 </template>
