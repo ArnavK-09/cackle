@@ -6,8 +6,6 @@ type lbUser = {
 };
 
 
-
-
 // exporting 
 export type {
     lbUser

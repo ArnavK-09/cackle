@@ -1,7 +1,9 @@
-// TODO: Types
-
 // imports
 import JWT from "jsonwebtoken";
+
+// types
+import type { LoginUserWithID } from "~~/types/backend";
+import type { H3Event } from "h3";
 
 // getting jwt config
 const config = useRuntimeConfig();
@@ -12,7 +14,7 @@ const refreshTokenSecret = config.jwtRefreshTokenSecret;
 
 /* Access Token */
 // create access token
-const createAcessToken = (user: any) => {
+const createAcessToken = (user: LoginUserWithID) => {
     // payload & options
     const payload = {
         id: user.id,
@@ -37,7 +39,7 @@ const decodeAcessToken = (token: string) => {
 
 /* Refresh Token */
 // create refresh token
-const createRefreshToken = (user: any) => {
+const createRefreshToken = (user: LoginUserWithID) => {
     // payload & options
     const payload = {
         id: user.id,
@@ -62,7 +64,7 @@ const decodeRefreshToken = (token: string) => {
 
 /* Shared */
 // get both access & refresh tokens
-const getAllTokens = (user: any) => {
+const getAllTokens = (user: LoginUserWithID) => {
     return {
         accessToken: createAcessToken(user),
         refreshToken: createRefreshToken(user),
@@ -70,7 +72,7 @@ const getAllTokens = (user: any) => {
 };
 
 // setting up cookie for resfresh token
-const setupRefreshTokenCookie = (e: any, token: string) => {
+const setupRefreshTokenCookie = (e: H3Event, token: string) => {
     // set cookie
     setCookie(e, "refreshToken", token, {
         httpOnly: true,

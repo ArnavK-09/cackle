@@ -1,4 +1,4 @@
-name: Node.js CI
+name: Cackle Workflow
 
 on:
   push:
@@ -21,3 +21,4 @@ jobs:
         cache: 'npm'
     - run: npm ci
     - run: npm run check
+    - run: npm run db

@@ -1,9 +1,12 @@
 // imports
 import { createUser } from "~~/server/database/auth";
+
+// types 
 import type { UserInfo } from "~~/types/user";
+import type { H3Event } from "h3";
 
 // handle event
-export default defineEventHandler(async (e) => {
+export default defineEventHandler(async (e: H3Event) => {
 
     /*Getting Body*/
 

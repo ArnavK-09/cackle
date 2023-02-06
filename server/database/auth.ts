@@ -5,6 +5,8 @@ import bcrypt from "bcrypt";
 // type
 import type { UserInfo } from "~~/types/user";
 
+/* USERS */
+
 // create user
 function createUser(userInfo: UserInfo) {
     return db.user.create({
@@ -25,13 +27,55 @@ function getUserByUsername(name: string) {
 }
 
 // get user by id
-function getUserById(id: string) {
+function getUserByID(email: string) {
     return db.user.findUnique({
         where: {
-            id: id,
+            id: email,
         },
     });
 }
 
+/* TOKENS */
+// adding refresh token to db
+function createRefreshToken({
+    token,
+    userID,
+}: {
+    token: string;
+    userID: string;
+}) {
+    return db.refreshToken.create({
+        data: {
+            token: token,
+            userId: userID,
+        },
+    });
+}
+
+// get refresh token
+function getRefreshToken(token: string) {
+    return db.refreshToken.findUnique({
+        where: {
+            token: token,
+        },
+    });
+}
+
+// delete ookie from db 
+function deleteRefreshToken(token: string) {
+    return db.refreshToken.delete({
+        where: {
+            token: token,
+        },
+    })
+}
+
 // exporting
-export { createUser, getUserByUsername, getUserById };
+export {
+    createUser,
+    getUserByUsername,
+    getUserByID,
+    createRefreshToken,
+    getRefreshToken,
+    deleteRefreshToken
+};
