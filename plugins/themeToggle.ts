@@ -1,15 +1,19 @@
+// toggle color theme
 export default defineNuxtPlugin(() => {
-    const colorMode = useColorMode()
+    // getting color module
+    const colorMode = useColorMode();
+
+    // providing nuxt app with $toggleTheme
     return {
-      provide: {
-        toggleTheme: () => {
-            if(colorMode.preference == 'light') {
-                colorMode.preference = 'dark';
-            } else {
-                colorMode.preference = 'light'
-            }
-        }
-      }
-    }
-  })
-  
+        provide: {
+            toggleTheme: () => {
+                // toggle theme logic
+                if (colorMode.preference == "light") {
+                    colorMode.preference = "dark";
+                } else {
+                    colorMode.preference = "light";
+                }
+            },
+        },
+    };
+});

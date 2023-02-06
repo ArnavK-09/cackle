@@ -98,11 +98,7 @@ defineProps({
             content:
                 "Helloo tweetHelloo tweetHelloo tweetHelloo tweetHelloo tweetHelloo tweetHelloo tweetHelloo tweetHelloo tweetHelloo tweetHelloo tweetHelloo tweetHelloo tweetHelloo tweetHelloo tweetHelloo tweetHelloo tweetHelloo tweetHelloo tweetHelloo tweetHelloo tweetHelloo tweetHelloo tweetHelloo tweetHelloo tweet",
             timestamp: "2m ago",
-            replyTo: {
-                name: "Hiii",
-                username: "username",
-                pfp: "https://picsum.photos/200/200",
-            },
+            replyTo: null,
             mediaFiles: [
                 {
                     url: "https://picsum.photos/200/200",

@@ -1,6 +1,6 @@
 <template>
     <SafeSection
-        classes="border-white-200 dark:border-gray-700 shadow-md z-8 rounded-md"
+        classes="border-white-200 dark:border-gray-700 shadow-md z-8 rounded-md overflow-hidden"
     >
         <div class="flex items-center flex-shrink-0 p-3 pb-0">
             <div class="flex w-12 items-top">
@@ -20,12 +20,12 @@
         </div>
 
         <!-- File Selector -->
-        <div class="p-3 pl-16 flex flex-wrap flex-col">
+        <div class="p-1 md:p-3 flex flex-col jusitfy-center items-center">
             <img
                 v-for="file in selectedFiles"
                 :src="file"
                 alt="Image selected"
-                class="shadow-md m-2 border rounded-2xl w-auto h-1/2 border-white-200 dark:border-gray-700"
+                class="shadow-md m-2 border rounded-2xl w-auto h-1/3 border-white-200 dark:border-gray-700 md:h-1/2"
                 loading="lazy"
             />
         </div>

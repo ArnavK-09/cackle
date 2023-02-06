@@ -21,7 +21,7 @@
           <div class="col-span-11 ml-3  md:mx-3 lg:ml-10 lg:col-span-8 md:col-span-8 xl:col-span-7 ">
             <AppTitle :title="route.path.split('/')[1].trim() == '' ? 'Home' : route.path.split('/')[1]" />
             <NuxtLoadingIndicator :height="5"
-              color="linear-gradient(90deg, rgba(95,153,247,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%)" />
+              color="linear-gradient(90deg, rgba(95,153,247,1) 0%, rgba(9,9,121,1) 35%, rgba(95,153,247,1) 100%)" />
             <NuxtPage />
           </div>
 
