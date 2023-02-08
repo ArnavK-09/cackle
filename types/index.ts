@@ -1,4 +1,3 @@
 // exporting all types 
-export * from './api';
-export * from './meta';
-export * from './user';
+export * from './frontend';
+export * from './backend';

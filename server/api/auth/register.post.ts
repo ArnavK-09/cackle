@@ -2,8 +2,9 @@
 import { createUser } from "~~/server/database/auth";
 
 // types 
-import type { UserInfo } from "~~/types/user";
+import type { UserInfo } from "~~/types/backend/user";
 import type { H3Event } from "h3";
+import type { PrismaClientKnownRequestError } from "@prisma/client/runtime";
 
 // handle event
 export default defineEventHandler(async (e: H3Event) => {
@@ -78,7 +79,7 @@ export default defineEventHandler(async (e: H3Event) => {
 
     // creating user 
     let res = await createUser(finalData)
-    .catch((error) => {
+    .catch((error: PrismaClientKnownRequestError) => {
         if(error.code == "P2002") {
             return createError({
                 statusCode: 500,
@@ -92,6 +93,7 @@ export default defineEventHandler(async (e: H3Event) => {
         }
         
     });
+
     // returning data 
     return res;
 });

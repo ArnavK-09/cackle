@@ -3,7 +3,7 @@ import { prisma as db } from "./";
 import bcrypt from "bcrypt";
 
 // type
-import type { UserInfo } from "~~/types/user";
+import type { UserInfo } from "~~/types/backend/user";
 
 /* USERS */
 
