@@ -1,5 +1,5 @@
 <template>
-    <section id="loading_spinner">
+    <section id="loading">
         <div
             :class="`w-${size} h-#{size} text-black dark:text-white animate-spin `"
         >

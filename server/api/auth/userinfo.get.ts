@@ -1,3 +1,5 @@
 export default defineEventHandler((event) => {
-  return 'Hello auth/userinfo.get'
+  return {
+    user:true
+  }
 })

@@ -1,12 +1,13 @@
-export default (url: String, options: any = {}) => {
-    // const { useAuthToken } = useAuth()
+// api composable 
+export default async <T>(url: String, options: any = {}) => {
+    // get token 
+    const { getAuthToken } = useAuth();
 
-
-    return $fetch('/api/' + url, {
+    return useFetch<T>('/api/' + url, {
         ...options,
         headers: {
             ...options.headers,
-            Authorization: `Bearer $ {useAuthToken().value}`
+            Authorization: `Bearer ${getAuthToken.value}`
         }
-    })
-}
+    });
+};

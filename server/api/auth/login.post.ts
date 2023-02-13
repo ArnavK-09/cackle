@@ -81,7 +81,6 @@ export default defineEventHandler(async (e: H3Event) => {
     // returning access token
     return {
         access_token: userTokens.accessToken,
-        test: userTokens.refreshToken,
         user: user,
     };
 });

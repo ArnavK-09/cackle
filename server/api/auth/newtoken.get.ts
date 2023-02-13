@@ -11,8 +11,8 @@ export default defineEventHandler(async (e: H3Event) => {
     /* Get Token & Cookie */
 
     // getting refresh token cookie
-    const cookie = getCookie(e, "refreshtoken");
-    
+    const cookie = getCookie(e, "refreshToken");
+
     // validate
     if (!cookie || cookie.trim() == "") {
         throw createError({

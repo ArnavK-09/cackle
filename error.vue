@@ -1,6 +1,6 @@
 <template>
     <NuxtLink to="/"><h1>Error</h1></NuxtLink>
-    {{ error }}
+    <p v-html="error.stack"></p>
 </template>
 
 <script setup>

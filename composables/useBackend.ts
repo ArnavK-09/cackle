@@ -19,9 +19,9 @@ export default function() {
     const getLeaderboard = () => {
         return new Promise(async (resolve, reject) => {
             try {
-                const response = await useApi('leaderboard', {
+                const response = await useApi<lbUser>('leaderboard', {
                     method: 'GET',
-                }) as lbUser;
+                });
 
                 resolve(response)
             } catch (error) {

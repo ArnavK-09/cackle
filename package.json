@@ -3,7 +3,7 @@
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
-    "check": "nuxt typecheck",
+    "typecheck": "nuxt typecheck",
     "db": "prisma db push",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
@@ -26,6 +26,7 @@
     "@prisma/client": "^4.9.0",
     "@tailwindcss/forms": "^0.5.3",
     "bcrypt": "^5.1.0",
-    "jsonwebtoken": "^9.0.0"
+    "jsonwebtoken": "^9.0.0",
+    "jwt-decode": "^3.1.2"
   }
 }
