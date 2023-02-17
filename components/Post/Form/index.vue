@@ -5,7 +5,7 @@
         <div class="flex items-center flex-shrink-0 p-3 pb-0">
             <div class="flex w-12 items-top">
                 <img
-                    :src="user.img"
+                    :src="user.pfp"
                     alt="User Image"
                     class="inline-block w-9 h-9 rounded-full shadow-md"
                 />
@@ -20,7 +20,9 @@
         </div>
 
         <!-- File Selector -->
-        <div class="p-1 md:p-3 flex flex-col jusitfy-center items-center">
+        <div
+            class="p-1 md:p-3 flex flex-col jusitfy-center items-center pt-0 top-0"
+        >
             <img
                 v-for="file in selectedFiles"
                 :src="file"
@@ -36,6 +38,7 @@
             hidden
             accept="image/png, image/gif, image/jpeg"
             @change="handleImageChange"
+            :multiple="true"
         />
         <!-- Icons -->
         <div class="flex p-1 pl-14">
@@ -67,9 +70,17 @@
 <script setup>
 // icon import
 import { PhotoIcon, ClipboardIcon } from "@heroicons/vue/24/outline";
+// props
+const props = defineProps({
+    user: {
+        required: true,
+        default: {
+            pfp: '/icon.png'
+        }
+    },
+});
 
 /* component */
-
 // refs
 const imageInput = ref("");
 const postContent = ref("");
@@ -86,15 +97,6 @@ const placeholder = computed(() => {
     ];
     return holders[Math.floor(Math.random() * holders.length)];
 });
-
-// props
-defineProps({
-    user: {
-        type: Object,
-        required: true,
-    },
-});
-
 /* functions */
 
 // open image selector
@@ -105,24 +107,24 @@ function handleImageChange(e) {
     // files limit check - 6
     if (selectedFiles.length > 5) {
         throw createError({ message: "Image limit exceeded :(", fatal: true });
-    };
+    }
 
-    // file reader init 
+    // file reader init
     const newFile = e.target.files[0];
     const reader = new FileReader();
 
-    // adding file to list on event 
+    // adding file to list on event
     reader.onload = (event) => {
         selectedFiles.push(event.target.result);
     };
 
-    // reading file 
+    // reading file
     reader.readAsDataURL(newFile);
 }
 
 // post
 function handlePostButton(e) {
-    // TODO 
+    // TODO
     alert("post btn click");
 }
 </script>

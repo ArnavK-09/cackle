@@ -27,10 +27,10 @@ function getUserByUsername(name: string) {
 }
 
 // get user by id
-function getUserByID(email: string) {
+function getUserByID(id: string) {
     return db.user.findUnique({
         where: {
-            id: email,
+            id: id,
         },
     });
 }

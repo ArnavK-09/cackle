@@ -10,49 +10,77 @@
             <!-- trending card  -->
             <SidebarRightCard heading="What's Trending?" seeMoreHref="trending">
                 <SafeSection
-                    :isLoading="trendingList.length == 0 && (trendingList.error == false || trendingList.error == undefined)">
-                    <SidebarRightCardTrendItem v-for="trend in trendingList" :title="trend.title"
+                    :isLoading="
+                        trendingList.length == 0 &&
+                        (trendingList.error == false ||
+                            trendingList.error == undefined)
+                    "
+                >
+                    <SidebarRightCardTrendItem
+                        v-for="trend in trendingList.data"
+                        :title="trend.title"
                         :subtitle="trend.total"
-                        :err="trendingList.error ? getCardErrMsg(trendingList) : getCardErrMsg(false)" />
+                        :err="
+                            trendingList.error
+                                ? getCardErrMsg(trendingList)
+                                : getCardErrMsg(false)
+                        "
+                    />
                 </SafeSection>
             </SidebarRightCard>
-
 
             <!-- leaderboard card  -->
             <SidebarRightCard heading="Who's On Top?" seeMoreHref="explore">
-                <SafeSection :isLoading="lbList.length == 0 && (lbList.error == false || lbList.error == undefined)">
-                    <SidebarRightCardProfileItem v-for="user in lbList" :name="user.name" :username="user.username"
-                        :err="lbList.error ? getCardErrMsg(lbList) : getCardErrMsg(false)" />
+                <SafeSection
+                    :isLoading="
+                        lbList.length == 0 &&
+                        (lbList.error == false || lbList.error == undefined)
+                    "
+                >
+                    <SidebarRightCardProfileItem
+                        v-for="user in lbList.data"
+                        :name="user.name"
+                        :username="user.username"
+                        :err="
+                            lbList.error
+                                ? getCardErrMsg(lbList)
+                                : getCardErrMsg(false)
+                        "
+                    />
                 </SafeSection>
             </SidebarRightCard>
-
         </section>
     </section>
 </template>
 
-<script setup>
-const { getTrending, getLeaderboard } = useBackend()
-const trendingList = ref([])
-const lbList = ref([])
+<script setup >
+// importing fuctions
+const { getTrending, getLeaderboard } = useBackend();
 
+// variables
+const trendingList = ref([]);
+const lbList = ref([]);
+
+// helper func
 const getCardErrMsg = (list) => {
-    return list == false ? { status: false } : { status: list.error, message: list.errorMsg }
-}
+    return list == false
+        ? { status: false }
+        : { status: list.error, message: list.errorMsg };
+};
+
+
+// get data on mount  //TODO: CHANGE
 onMounted(async () => {
     try {
-        trendingList.value = await getTrending()
-
+        trendingList.value = await getTrending();
     } catch (e) {
-        trendingList.value = { error: true, errorMsg: e }
+        trendingList.value = { error: true, errorMsg: e };
     }
 
     try {
-        lbList.value = await getLeaderboard()
-
+        lbList.value = await getLeaderboard();
     } catch (e) {
-        lbList.value = { error: true, errorMsg: e }
+        lbList.value = { error: true, errorMsg: e };
     }
-})
-
-
+});
 </script>

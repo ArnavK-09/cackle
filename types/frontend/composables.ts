@@ -1,12 +1,15 @@
 // /api/leaderboard
 type lbUser = {
-    name: String,
-    username: String,
-    img: String
+    name: String;
+    username: String;
+    img: String;
 };
 
-
-// exporting 
-export type {
-    lbUser
+// /api/whatstrending
+type trendItem = {
+    title: string;
+    total: string;
 };
+
+// exporting
+export type { lbUser, trendItem };

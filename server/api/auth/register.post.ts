@@ -1,5 +1,6 @@
 // imports
 import { createUser } from "~~/server/database/auth";
+import {H3Error } from 'h3';
 
 // types 
 import type { UserInfo } from "~~/types/backend/user";
@@ -42,28 +43,24 @@ export default defineEventHandler(async (e: H3Event) => {
         pfp: "https://picsum.photos/200/200",
     };
 
-
     /*Validation*/
 
     // email check 
     if(!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(finalData.email)) {
-        throw createError({
-            statusCode: 400,
-            statusMessage: "Invalid Email",
-        });
+        return sendError(e, createError({ statusCode: 400, statusMessage: 'email do not match' }))
     }
     // password limit check 
-    if(finalData.password.length < 8 || finalData.password.length > 20) {
+    if(finalData.password.length < 7|| finalData.password.length > 19) {
         throw createError({
             statusCode: 400,
             statusMessage: "Password must be at least 8 characters and more than 20 characters",
         })
     }
     // username validate 
-    if(finalData.username.length > 12 || finalData.username.length < 5) {
+    if(finalData.username.length > 12 || finalData.username.length < 3) {
         throw createError({
             statusCode: 400,
-            statusMessage: "Username must be at least 5 characters and more than 12 characters",
+            statusMessage: "Username must be at least 4 characters and more than 12 characters",
         })
     }
     // name validate 

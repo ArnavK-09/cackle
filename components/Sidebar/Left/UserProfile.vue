@@ -15,9 +15,9 @@
                 <h1
                     class="text-sm font-semibold tracing-wide text-gray-800 dark:text-white"
                 >
-                    {{ username }}
+                    {{ name }}
                 </h1>
-                <p class="text-sm text-gray-400">@{{ handle }}</p>
+                <p class="text-sm text-gray-400">@{{ username }}</p>
             </div>
         </div>
         <!-- Theme changer for bigger screens  -->
@@ -46,7 +46,7 @@ defineProps({
         type: String,
         required: true,
     },
-    handle: {
+    name: {
         type: String,
         required: true,
     },

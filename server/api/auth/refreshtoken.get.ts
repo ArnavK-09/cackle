@@ -41,7 +41,7 @@ export default defineEventHandler(async (e: H3Event) => {
         const user = await getUserByID(decodedToken.id);
 
         // new access token
-        const { accessToken } = await getAllTokens(user);
+        const { accessToken } = getAllTokens(user);
 
         // sending response
         return {

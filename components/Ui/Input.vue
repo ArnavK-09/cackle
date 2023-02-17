@@ -3,7 +3,7 @@
         <span
             v-if="title"
             :class="disabled ? 'text-gray-600' : ''"
-            class="mb-1 text-left text-cackle-500 text-sm font-semibold block"
+            class="mb-1 text-left text-cackle-500 text-sm font-semibold block disabled:opacity-95"
             >{{ title }}</span
         >
         <input
@@ -12,7 +12,7 @@
             :required="required"
             :type="type"
             v-on:change="$emit('valueUpdated', $event)"
-            class="placeholder:italic placeholder:text-gray-400 rounded-lg block w-full focus:ring-cackle-500 ring-3 focus:border-cackle-500 shadow-md transition ease-in-out duration-250 dark:focus:border-gray-700 dark:focus:ring-gray-700 font-normal"
+            class="placeholder:italic placeholder:text-gray-400 rounded-lg block w-full focus:ring-cackle-500 ring-3 focus:border-cackle-500 shadow-md transition ease-in-out duration-250 dark:focus:border-gray-700 dark:focus:ring-gray-700 font-normal disabled:opacity-60"
         />
     </div>
 </template>

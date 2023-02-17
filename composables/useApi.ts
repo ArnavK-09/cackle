@@ -3,7 +3,7 @@ export default async <T>(url: String, options: any = {}) => {
     // get token 
     const { getAuthToken } = useAuth();
 
-    return useFetch<T>('/api/' + url, {
+    return $fetch<T>('/api/' + url, {
         ...options,
         headers: {
             ...options.headers,

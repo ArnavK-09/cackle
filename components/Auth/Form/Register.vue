@@ -1,12 +1,10 @@
 <template>
     <form
         @submit.prevent="handleRegisterForm"
-        class="bg-white dark:bg-cackle-300 shadow-2xl rounded-lg p-10 text-center"
+        class="bg-white shadow-2xl rounded-lg p-10 text-center"
     >
         <!-- title  -->
-        <h1
-            class="text-black dark:text-white text-lg md:text-3xl font-bold leading-5 underline mb-5"
-        >
+        <h1 class="text-black text-lg md:text-3xl font-bold leading-5 mb-5">
             Register Now!
         </h1>
 
@@ -48,29 +46,42 @@
         >
             Submit
         </button>
-
-        <!-- change form  -->
-        <button
-        type="button"
-            @click="test"
-            class="text-black dark:text-gray-100 hover:underline text-thin cursor-pointer select-none"
-        >
-            Already Registered?
-    </button>
     </form>
 </template>
 
 <script setup>
+
+// register function 
+const { registerUser } = useAuth();
+
 // form reactive
 const form = reactive({
     name: "",
     email: "",
     username: "",
     password: "",
+    loading: true
 });
-function test(e) {
-    console.log('okred', e)
-}
+
 // handle form submit
-function handleRegisterForm() {};
+async function handleRegisterForm() {
+    // set loading
+    form.loading = true;
+
+    // handle
+    try {
+        // login
+        let status = await registerUser(form.name, form.username, form.email, form.password);
+        if(status == true) {
+            // registered 
+            alert('Registered successfully')
+        }
+    } catch (e) {
+        // err
+        console.log(e);
+    } finally {
+        // set loading
+        form.loading = false;
+    }
+}
 </script>

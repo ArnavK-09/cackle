@@ -1,19 +1,35 @@
 <template>
     <SafeSection>
-        <!-- login form  -->
-        <AuthFormLogin v-if="loginForm" @changeForm="changeForm"/>
+        <Transition name="form">
+            <!-- login form  -->
+            <AuthFormLogin v-if="loginForm" @changeForm="changeForm" />
 
-        <!-- register form  -->
-        <AuthFormRegister v-else @changeForm="changeForm"/>
+            <!-- register form  -->
+            <AuthFormRegister v-else @changeForm="changeForm" />
+        </Transition>
+
+        <!-- change form  -->
+        <div class="text-center opacity-80">
+            <button
+                type="button"
+                @click="changeForm"
+                class="text-black font-semibold text-center hover:underline text-thin cursor-pointer select-none"
+            >
+                {{
+                    loginForm == true
+                        ? "Create New Account"
+                        : "Already Registered?"
+                }}
+            </button>
+            <button @click="$emit('tempclose')" class="text-black">Off</button>
+        </div>
     </SafeSection>
 </template>
 <script setup>
 // form  var
-const loginForm = ref(true);
-
+const loginForm = ref(false);
 // change form
 function changeForm() {
-    console.log('debug')
     loginForm.value = !loginForm.value;
 }
 </script>

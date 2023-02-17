@@ -1,17 +1,19 @@
-export default defineEventHandler((e) => {
-  return new Promise(async (resolve, reject) => {
-    try {
-      const response = [{
-        title: '#Cackle',
-        total: '545.6K'
-      }, {
-        title: 'Cackle Under Development',
-        total: '55.3K'
-      }]
-      resolve(response)
-    } catch (error) {
-      reject(error)
-    }
-  })
+// type
+import type { trendItem } from "~~/types";
 
-})
+// handler
+export default defineEventHandler((e) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            const response: trendItem[] = [
+                {
+                    title: "John Doe",
+                    total: "55K",
+                },
+            ];
+            return response;
+        } catch (error) {
+            reject(error);
+        }
+    });
+});

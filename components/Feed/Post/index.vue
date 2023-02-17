@@ -75,6 +75,7 @@
 <script setup>
 // border color
 const { defaultBorderColor } = useAppConfig().theme;
+
 // props
 defineProps({
     author: {

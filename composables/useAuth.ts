@@ -2,13 +2,13 @@
 import jwt_decode from "jwt-decode";
 
 // types
-import type { LoginUserWithID } from "~~/types";
+import type { CackleUser } from "~~/types";
 import type { JwtPayload } from "jwt-decode";
 
 // custom temp type
-type LoginUserWithToken = {
+type CackleUserWithToken = {
     access_token: string;
-    user: LoginUserWithID;
+    user: CackleUser;
 };
 
 // Auth system
@@ -25,11 +25,11 @@ export function useAuth() {
     }
 
     // set user
-    function setUser(user: LoginUserWithID) {
+    function setUser(user: CackleUser) {
         getAuthUser.value = user;
     }
 
-    // set loading 
+    // set loading
     function setLoading(loading: boolean) {
         isAuthLoading.value = loading;
     }
@@ -41,27 +41,42 @@ export function useAuth() {
         // promise
         return new Promise(async (resolve, reject) => {
             // sending req
-            const { data, error } = await useApi<LoginUserWithToken>(
-                "auth/login",
-                {
-                    method: "POST",
-                    body: { username, password },
-                }
-            );
+            await useApi<CackleUserWithToken>("auth/login", {
+                method: "POST",
+                body: { username, password },
+            })
+                .then((res) => {
+                    // set user token
+                    setUserToken(res.access_token);
+                    // set user
+                    setUser(res.user);
 
-            // validating
-            if (error.value) {
-                // if error
-                reject(error);
-            } else {
-                // set user token
-                setUserToken(data.value.access_token);
-                // set user
-                setUser(data.value.user);
+                    // resolve
+                    resolve(res);
+                })
+                .catch((err) => reject(err));
+        });
+    };
 
-                // resolve
-                resolve(data.value);
-            }
+    // register user
+    const registerUser = async (
+        name: string,
+        username: string,
+        email: string,
+        password: string
+    ) => {
+        // promise
+        return new Promise(async (resolve, reject) => {
+            // sending req
+            await useApi<CackleUser>("auth/register", {
+                method: "POST",
+                body: { name, username, email, password },
+            })
+                .then((res) => {
+                    console.log(res);
+                    resolve(true);
+                })
+                .catch((err) => reject(err));
         });
     };
 
@@ -70,121 +85,101 @@ export function useAuth() {
         // promise
         return new Promise(async (resolve, reject) => {
             // sending req
-            const { data, error } = await useApi<LoginUserWithToken>(
-                "auth/userinfo"
-            );
-
-            // validating
-            if (error.value) {
-                // if error
-                reject(error);
-            } else {
-                // set user
-                setUser(data.value.user);
-
-                // resolve
-                resolve(data.value);
-            }
+            await useApi<CackleUser>("auth/userinfo")
+                .then((user) => {
+                    setUser(user);
+                    resolve(user);
+                })
+                .catch((err) => reject(err));
         });
     };
 
     // refresh token
-    const refreshToken = () => {
+    const refreshToken = async () => {
         // promise
         return new Promise(async (resolve, reject) => {
             // sending req
-            const { data, error } = await useApi<LoginUserWithToken>(
-                "auth/newtoken"
-            );
-
-            // validating
-            if (error.value) {
-                // if error
-                reject(error);
-            } else {
-                // set user token
-                setUserToken(data.value.access_token);
-                // resolve
-                resolve(data.value);
-            }
+            await useApi<CackleUserWithToken>("auth/refreshtoken")
+                .then((res) => {
+                    setUserToken(res.access_token);
+                    resolve(res);
+                })
+                .catch((error) => reject(error));
         });
     };
 
     // refresh access token
     const refreshAcessToken = () => {
-        // promise 
-        return new Promise(async (resolve, reject) => {
-            // get current token
-            const currentToken = getAuthToken.value;
+        // get current token
+        const currentToken = getAuthToken.value;
 
-            // validate
-            if (!currentToken || currentToken == null) {
-                // pass
-                return;
-            }
-            // decode token
-            const decodedToken = jwt_decode<JwtPayload>(currentToken as string);
-            console.log(decodedToken.exp - 5999)
-            // refresh
-            setTimeout(async () => {
-                // refreshing
-                await refreshToken();
-                refreshAcessToken();
-            }, decodedToken.exp - 5999);
-        });
+        // validate
+        if (!currentToken || currentToken == null) {
+            // pass
+            return;
+        }
+        // decode token
+        const decodedToken = jwt_decode<JwtPayload>(currentToken as string);
+
+        // refresh
+        setTimeout(async () => {
+            // refreshing
+            await refreshToken();
+            refreshAcessToken();
+        }, decodedToken.exp - 5999);
     };
 
     // log out
     const logOutUser = () => {
         return new Promise(async (resolve, reject) => {
             // sending req
-            const { data, error } = await useApi<string>("auth/logout", {
+            await useApi<string>("auth/logout", {
                 method: "POST",
-            });
+            })
+                .then((res) => {
+                    // set null to values
+                    setUserToken(null);
+                    setUser(null);
 
-            // validating
-            if (error.value) {
-                // set null to values
-                setUserToken(null);
-                setUser(null);
+                    // resolve
+                    resolve(res);
+                })
+                .catch((err) => {
+                    // set null to values
+                    setUserToken(null);
+                    setUser(null);
 
-                // if error
-                reject(error);
-            } else {
-                // set null to values
-                setUserToken(null);
-                setUser(null);
-
-                // resolve
-                resolve(data.value);
-            }
+                    // if error
+                    reject(err);
+                });
         });
     };
 
     /* START AUTH */
     async function implementAuthentication() {
-        // promise 
+        // promise
         return new Promise(async (resolve, reject) => {
-            // set loading 
+            // set loading
             setLoading(true);
 
-            // implementing auth 
+            // implementing auth
             try {
-                // get token & user 
+                // get token & user
                 await refreshToken();
                 await getUserData();
-                await refreshAcessToken();
-            } catch(e) {
-                // err 
-                reject(e)
+                refreshAcessToken();
+                // done
+                resolve(true);
+            } catch (e) {
+                // err
+                reject(e);
             } finally {
-                // off loading 
-                setLoading(false)
-
-                // resolve 
-                resolve(true)
+                // off loading
+                setLoading(false);
+                // resolve
+                resolve(true);
             }
-        })
+        });
     }
 
     // returning
@@ -193,10 +188,11 @@ export function useAuth() {
         getAuthUser,
         isAuthLoading,
         loginUser,
+        registerUser,
         getUserData,
         refreshToken,
         logOutUser,
         refreshAcessToken,
-        implementAuthentication
+        implementAuthentication,
     };
 }

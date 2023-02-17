@@ -2,12 +2,27 @@
     <main>
         <div class="bg-white dark:bg-cackle-900">
             <!-- loading screen  -->
-            <div v-if="isAuthLoading">
+            <div
+                v-if="isAuthLoading"
+                class="h-screen w-screen flex justify-center items-center"
+            >
                 <HandleLoading />
             </div>
 
             <!-- app view  -->
-            <section v-else-if="currentUser">
+            <section v-else>
+                <!-- auth screen  -->
+                <Teleport to="body" v-if="!currentUser">
+                    <LazyClientOnly>
+                        <div
+                            class="h-screen w-screen flex items-center justify-center bg-transparent backdrop-blur-md z-20 fixed top-0"
+                        >
+                            <AuthForm @tempclose="modalOpen = !modalOpen" />
+                        </div>
+                    </LazyClientOnly>
+                </Teleport>
+
+                <!-- content  -->
                 <div
                     class="grid grid-cols-12 mx-auto lg:max-w-7xl lg:px-9 lg:gap-4"
                 >
@@ -46,15 +61,6 @@
                     </div>
                 </div>
             </section>
-
-            <!-- auth screen  -->
-            <Teleport to="body" v-else>
-                <div
-                    class="h-screen w-screen flex items-center justify-center bg-cackle-500/10"
-                >
-                    <AuthForm />
-                </div>
-            </Teleport>
         </div>
     </main>
 </template>

@@ -23,9 +23,9 @@
 
         <!-- user logged in profile  -->
         <SidebarLeftUserProfile
-            username="JoneDoe"
-            handle="johndoe.1"
-            image="https://picsum.photos/200/200"
+            :username="getAuthUser?.username ||'login_now'"
+            :name="getAuthUser?.name ||'Guest'"
+            :image="getAuthUser?.pfp ||'/icon.png'"
         />
     </section>
 </template>
@@ -49,6 +49,9 @@ import {
     TagIcon,
     BookmarkSquareIcon,
 } from "@heroicons/vue/24/outline";
+
+// imports 
+const { getAuthUser } = useAuth();
 
 // all sidebar links with icons and url
 const sidebarLinks = [

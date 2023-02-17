@@ -1,12 +1,21 @@
 <template>
     <SafeSection>
-        <PostForm :user="{ img: 'https://picsum.photos/200/200'}"/>
+        <ClientOnly>
+            <PostForm :user="currentUser" />
+        </ClientOnly>
         <Feed />
     </SafeSection>
 </template>
 
 <script setup>
-useHead(useMetaHelper({
-    title: 'Home'
-}))
+// get current user
+const { getAuthUser } = useAuth();
+const currentUser = getAuthUser.value;
+
+// meta tags
+useHead(
+    useMetaHelper({
+        title: "Home"
+    })
+);
 </script>

@@ -49,9 +49,13 @@ export default defineEventHandler(async (e: H3Event) => {
     }
 
     // custom 
-    const user: LoginUserWithID = {
+    const user: CackleUser = {
         id: db_user.id,
         username: db_user.username,
+        name: db_user.name,
+        pfp: db_user.pfp,
+        email: db_user.email,
+        createdAt: db_user.createdAt,
         password: db_user.password,
     };
 
