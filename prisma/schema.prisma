@@ -8,7 +8,7 @@ generator client {
 // db config 
 datasource db {
   provider = "mongodb"
-  url      = process.env("DATABASE_URL")
+  url      = env("DATABASE_URL")
 }
 
 // User Model 
@@ -22,12 +22,12 @@ model User {
   createdAt    DateTime       @default(now())
   // relations 
   refreshToken RefreshToken[]
-  tweets       Tweet[]
+  tweets       Post[]
   mediaFiles   MediaFile[]
 }
 
-// Tweet 
-model Tweet {
+// Post 
+model Post {
   id         String      @id @default(auto()) @map("_id") @db.ObjectId
   text       String
   createdAt  DateTime    @default(now())
@@ -36,8 +36,8 @@ model Tweet {
   author     User        @relation(fields: [authorId], references: [id])
   authorId   String      @db.ObjectId
   replyToId  String?     @db.ObjectId
-  replyTo    Tweet?      @relation("replies", fields: [replyToId], references: [id], onDelete: NoAction, onUpdate: NoAction)
-  replies    Tweet[]     @relation("replies")
+  replyTo    Post?      @relation("replies", fields: [replyToId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  replies    Post[]     @relation("replies")
   // MediaFiles
   mediaFiles MediaFile[]
 }
@@ -63,6 +63,6 @@ model MediaFile {
   user             User     @relation(fields: [userId], references: [id])
   userId           String   @db.ObjectId
   // Tweets
-  tweet            Tweet?   @relation(fields: [tweetId], references: [id])
-  tweetId          String?  @db.ObjectId
+  post            Post?   @relation(fields: [postId], references: [id])
+  postId          String?  @db.ObjectId
 }

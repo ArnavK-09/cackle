@@ -79,8 +79,14 @@ export default defineNuxtConfig({
 
   // runtime config 
   runtimeConfig: {
+    // jwt 
     jwtAccessTokenSecret: process.env.JWT_ACCESS_TOKEN_SECRET,
     jwtRefreshTokenSecret: process.env.JWT_REFRESH_TOKEN_SECRET,
+
+    // cloudinary 
+    CloudinaryApiSecret:process.env.CLOUDINARY_API_SECRET,
+    CloudinaryApiKey:process.env.CLOUDINARY_API_KEY,
+    CloudinaryCloudName:process.env.CLOUDINARY_CLOUD_NAME
   },
 
   // css 
@@ -92,5 +98,5 @@ export default defineNuxtConfig({
   // type safe 
   typescript: {
     strict: true
-  }
+  },
 })

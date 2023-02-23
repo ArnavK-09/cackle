@@ -17,7 +17,7 @@
                     "
                 >
                     <SidebarRightCardTrendItem
-                        v-for="trend in trendingList.data"
+                        v-for="trend in trendingList"
                         :title="trend.title"
                         :subtitle="trend.total"
                         :err="
@@ -38,7 +38,7 @@
                     "
                 >
                     <SidebarRightCardProfileItem
-                        v-for="user in lbList.data"
+                        v-for="user in lbList"
                         :name="user.name"
                         :username="user.username"
                         :err="

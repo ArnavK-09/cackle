@@ -1,12 +1,13 @@
 // imports
 import { deleteRefreshToken } from "~~/server/database/auth";
 import { setupRefreshTokenCookie } from "~~/server/helpers/jwt";
+
 // handler
 export default defineEventHandler(async (e) => {
     try {
         // getting refresh token cookie
         const cookie = getCookie(e, "refreshtoken");
-
+        console.log(cookie)
         // validate
         if (!cookie || cookie.trim() == "") {
             return createError({

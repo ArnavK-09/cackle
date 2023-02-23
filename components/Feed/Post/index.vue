@@ -59,7 +59,7 @@
                 >
                     <img
                         :src="image.url"
-                        class="border-2 rounded-2xl"
+                        class="border-2 rounded-2xl w-full"
                         :class="defaultBorderColor"
                         alt="Post Image"
                     />

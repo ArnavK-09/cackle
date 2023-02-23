@@ -28,10 +28,10 @@ const createAcessToken = (user: LoginUserWithID) => {
 };
 
 // decode acess token
-const decodeAcessToken = (token: string) => {
+const decodeAcessToken = <T>(token: string) => {
     // validating token
     try {
-        return JWT.verify(token, accessTokenSecret);
+        return JWT.verify(token, accessTokenSecret) as T;
     } catch (error) {
         return null;
     }

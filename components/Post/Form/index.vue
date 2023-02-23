@@ -1,5 +1,6 @@
 <template>
     <SafeSection
+    :isLoading="isLoading"
         classes="border-white-200 dark:border-gray-700 shadow-md z-8 rounded-md overflow-hidden"
     >
         <div class="flex items-center flex-shrink-0 p-3 pb-0">
@@ -61,7 +62,7 @@
             </div>
 
             <div class="ml-auto">
-                <PostButton @onClick="handlePostButton" />
+                <PostButton @onClick="handlePost" />
             </div>
         </div>
     </SafeSection>
@@ -79,11 +80,14 @@ const props = defineProps({
         }
     },
 });
+// helper 
+const { createPost } = usePosts();
 
 /* component */
 // refs
 const imageInput = ref("");
 const postContent = ref("");
+const isLoading = ref(false);
 
 // data
 const selectedFiles = reactive([]);
@@ -122,9 +126,26 @@ function handleImageChange(e) {
     reader.readAsDataURL(newFile);
 }
 
-// post
-function handlePostButton(e) {
-    // TODO
-    alert("post btn click");
+// post 
+async function handlePost() {
+    // loading 
+    isLoading.value = true
+
+    // post 
+    try {
+        // TODO 
+        let response = await createPost({
+            content: postContent.value,
+            files: selectedFiles,
+        });
+
+        return response;
+    } catch (e) {
+        // error 
+        throw createError({ message: e.message, fatal: false });
+    } finally {
+        // end loading 
+        isLoading.value = false;
+    }
 }
 </script>

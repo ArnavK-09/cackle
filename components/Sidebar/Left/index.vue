@@ -3,30 +3,26 @@
         <!-- logo -->
         <NuxtLink to="/" aria-label="Cackle">
             <div
-                class="transition ease-in-out duration-250 underline rounded-full mr-2 mt-2 ml-1 lg:ml-5 p-2 mb-2 hover:bg-cackle-500/10 dark:hover:bg-white/30 w-min"
-            >
+                class="transition ease-in-out duration-250 underline rounded-full mr-2 mt-2 ml-1 lg:ml-5 p-2 mb-2 hover:bg-cackle-500/10 dark:hover:bg-white/30 w-min">
                 <AppLogo />
             </div>
         </NuxtLink>
 
         <!-- all icons -->
         <div class="mt-6 space-y-2">
-            <SidebarLeftLink
-                v-for="link in sidebarLinks"
-                :title="link.title"
-                :icon="link.icon"
-                :activeURL="link.activeURL"
-                :href="link.href"
-                :activeIcon="link.activeIcon"
-            />
+            <SidebarLeftLink v-for="link in sidebarLinks" :title="link.title" :icon="link.icon" :activeURL="link.activeURL"
+                :href="link.href" :activeIcon="link.activeIcon" />
+
+            <!-- more button  -->
+            <SidebarLeftLink title="More" :icon="Cog8ToothIcon" />
+            <!-- TODO: dropdown more  -->
+            <NuxtLink to="/user/logout" class="text-center hover:scale-105 text-red-600">Log Out?</NuxtLink>
         </div>
 
+
         <!-- user logged in profile  -->
-        <SidebarLeftUserProfile
-            :username="getAuthUser?.username ||'login_now'"
-            :name="getAuthUser?.name ||'Guest'"
-            :image="getAuthUser?.pfp ||'/icon.png'"
-        />
+        <SidebarLeftUserProfile :username="getAuthUser?.username || 'login_now'" :name="getAuthUser?.name || 'Guest'"
+            :image="getAuthUser?.pfp || '/icon.png'" />
     </section>
 </template>
 
@@ -88,13 +84,6 @@ const sidebarLinks = [
         activeIcon: InboxIconSolid,
         activeURL: "messages",
         href: "messages",
-    },
-    {
-        title: "More...",
-        icon: Cog8ToothIcon,
-        activeIcon: Cog8ToothIconSolid,
-        activeURL: "settings",
-        href: "@username",
     },
 ];
 </script>

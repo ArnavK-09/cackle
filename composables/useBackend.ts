@@ -10,7 +10,6 @@ export default function () {
                 const response = await useApi<trendItem>("whatstrending", {
                     method: "GET",
                 });
-
                 resolve(response);
             } catch (error) {
                 reject(error);
@@ -21,11 +20,14 @@ export default function () {
     const getLeaderboard = () => {
         // promise
         return new Promise(async (resolve, reject) => {
-            await useApi<lbUser>("leaderboard")
-                .then((res) => {
-                    resolve(res);
-                })
-                .catch((err) => reject(err));
+            try {
+                const response = await useApi<lbUser>("leaderboard", {
+                    method: "GET",
+                });
+                resolve(response);
+            } catch (error) {
+                reject(error);
+            }
         });
     };
 

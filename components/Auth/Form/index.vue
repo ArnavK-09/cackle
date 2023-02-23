@@ -21,7 +21,6 @@
                         : "Already Registered?"
                 }}
             </button>
-            <button @click="$emit('tempclose')" class="text-black">Off</button>
         </div>
     </SafeSection>
 </template>

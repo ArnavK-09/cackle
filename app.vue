@@ -17,7 +17,7 @@
                         <div
                             class="h-screen w-screen flex items-center justify-center bg-transparent backdrop-blur-md z-20 fixed top-0"
                         >
-                            <AuthForm @tempclose="modalOpen = !modalOpen" />
+                            <AuthForm />
                         </div>
                     </LazyClientOnly>
                 </Teleport>

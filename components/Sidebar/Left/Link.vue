@@ -31,6 +31,10 @@ const route = useRoute();
 let isActive;
 onMounted(() => {
     isActive = computed(() => {
+        // if not there 
+        if(props.activeURL == null || props.activeURL == undefined) return;
+
+        // check 
         if (
             props.activeURL !== "/" &&
             route.path.replace("/", "").includes(props.activeURL)
@@ -50,8 +54,7 @@ onMounted(() => {
 // props
 const props = defineProps({
     activeURL: {
-        type: String,
-        required: true,
+        required: false,
     },
     title: {
         type: String,
@@ -66,6 +69,7 @@ const props = defineProps({
     href: {
         type: String,
         default: "/",
+        required: false,
     },
 });
 </script>
